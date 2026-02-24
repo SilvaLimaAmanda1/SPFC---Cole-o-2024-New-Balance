@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+:root{
+    --vermelho-spfc: #fe0000;
+    --preto-spfc: #1a1a1a;
+    --branco-spfc: #ffffff;
+    --cinza-claro: #f4f4f4;
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans", sans-serif;
+}
+body{
+    background: var(--branco-spfc);
+    color: var(--preto-spfc);
+
+}
+/* Header / Logo */
+        header {
+            padding: 30px 50px;
+            display: flex;
+            justify-content: center;
+        }
+        .logo-spfc { width: 100px; height: auto; }
+
+        /* Layout Principal */
+       .main-container {
+          display: flex;
+        align-items: center;
+         justify-content: space-between;
+        min-height: 80vh; /* Aumentamos um pouco a área útil */
+        padding: 0 8%;
+}
+
+        /* Coluna Texto */
+        .content {
+            flex: 1;
+            z-index: 2;
+        }
+            #title {
+        font-size: 4rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+        background: linear-gradient(90deg, var(--preto-spfc) 0%, var(--vermelho-spfc) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: opacity 0.5s ease;
+    }
+        .content .stripe {
+            width: 60px;
+            height: 60px;
+            background: var(--vermelho-spfc);
+            margin-bottom: 20px;
+        }
+        .description {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 400px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .btn-comprar{
+            display: flex;
+            margin-top: 30px;
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--branco-spfc);
+            background: var(--vermelho-spfc);
+            border: none;
+            border-radius: 5px;
+            align-items: center;
+            position: relative;
+            gap: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            text-transform: uppercase;
+            transition: all 0.3s ease
+        }
+        .btn-comprar:hover{
+            transform: translateY(-3px);
+            background-color: #d60000;
+            box-shadow: 0 0 20px rgba(254, 0,0,0.6),
+             0 0 40px rgba(254, 0,0,0.4); /* Aqui está o segredo do brilho (Glow) */
+        }
+        .btn-comprar:active{
+            transform: translateY(-1px)/*Efeito de click*/
+        }
+
+        /* Imagem Central */
+        /* Container da imagem para evitar que o zoom vaze */
+.product-display {
+    perspective: 1000px;
+    /* overflow: hidden;  <-- REMOVA OU COMENTE ESTA LINHA */
+    filter: drop-shadow(0 20px 50px rgba(254, 0, 0, 0.15));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estado inicial da imagem */
+#main-shirt {
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* Classe de animação que será aplicada via JS */
+.shirt-transition {
+    opacity: 0 !important;
+    transform: scale(0.9) translateY(20px) !important;
+}
+
+        /* Coluna Ícones Remix */
+        .social-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            border-right: 2px solid var(--cinza-claro);
+        }
+        .social-column i{
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .social-column a {
+            text-decoration: none;
+            color: var(--preto-spfc);
+            font-size: 1.8rem;
+            transition: 0.3s;
+        }
+        .social-column a:hover i {
+            transform: translateX(-5px) rotate(-10deg); /* Um movimento de "balanço" ao passar o mouse */
+            color: var(--vermelho-spfc);
+        }
+
+     /* Seletor de Camisas Atualizado */
+        .nav-thumbs {
+            display: flex;
+            justify-content: center; /* Centraliza as miniaturas */
+            gap: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            z-index: 999;
+            
+            /* Alterações aqui: */
+            position: relative; 
+            margin: -50px auto 40px auto; /* Sobe um pouco para sobrepor levemente a seção principal, mas sem invadir o footer */
+            width: fit-content; /* Ajusta a largura ao conteúdo */
+        }
+        .nav-thumbs img {
+            width: 60px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+        .nav-thumbs img:hover, .nav-thumbs img.active {
+            opacity: 1;
+            transform: translateY(-10px);
+        }
+
+        footer {
+    background-color: var(--preto-spfc);
+    color: var(--branco-spfc);
+    padding: 40px 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    border-top: 4px solid var(--vermelho-spfc);
+}
+
+.footer-box h3 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--vermelho-spfc);
+}
+
+.footer-box p, .footer-box li {
+    font-size: 0.9rem;
+    color: #ccc;
+    list-style: none;
+    line-height: 1.8;
+}
+
+.footer-box ul { padding: 0; }
+
+.payment-info {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid var(--vermelho-spfc);
+}
+
+.payment-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 1.5rem;
+    margin-top: 15px;
+}
+
+.copyright {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <title>SPFC - Coleção 2024 New Balance</title>
+</head>
+<body>
+    <header>
+        <img src="image/logo1.png" alt="Logo SPFC" class="logo-spfc">
+    </header>
+
+    <div class="main-container">
+        <div class="content">
+            <div class="stripe"></div>
+            <h1 id="title">MANTO I</h1>
+            <p class="description" id="desc">A pureza do branco com o peso do escudo. O manto oficial para as batalhas no MorumBIS.</p>
+            <button class="btn-comprar">
+                comprar agora
+                <i class="ri-shopping-cart-2-line"></i>
+            </button>
+        </div>
+
+        <div class="product-display">
+            <img src="image/c1.png" id="main-shirt" alt="Camisa São Paulo">
+        </div>
+
+        <div class="social-column">
+            <a href="#"><i class="ri-instagram-line"></i></a>
+            <a href="#"><i class="ri-twitter-x-fill"></i></a>
+            <a href="#"><i class="ri-facebook-box-fill"></i></a>
+            <a href="#"><i class="ri-youtube-fill"></i></a>
+        </div>
+    </div>
+
+    <div class="nav-thumbs">
+        <img src="image/c1.png" class="active" onclick="updatePage(1)" id="t1">
+        <img src="image/c2.png" onclick="updatePage(2)" id="t2">
+        <img src="image/c3.png" onclick="updatePage(3)" id="t3">
+    </div>
+    <footer>
+    <div class="footer-box">
+        <h3>Sobre o Clube</h3>
+        <ul>
+            <li>MorumBIS</li>
+            <li>História</li>
+            <li>Sócio Torcedor</li>
+            <li>Transparência</li>
+        </ul>
+    </div>
+
+    <div class="footer-box">
+        <h3>Atendimento</h3>
+        <ul>
+            <li>Central de Ajuda</li>
+            <li>Trocas e Devoluções</li>
+            <li>Status do Pedido</li>
+            <li>Fale Conosco</li>
+        </ul>
+    </div>
+
+    <div class="footer-box">
+        <h3>Condições de Pagamento</h3>
+        <div class="payment-info">
+            <p><strong>Facilidade Tricolor:</strong></p>
+            <p>Aceitamos entrada que seja igual ou maior que o valor mínimo da fatura fechada para parcelamentos exclusivos.</p>
+        </div>
+        <div class="payment-icons">
+            <i class="ri-visa-line"></i>
+            <i class="ri-mastercard-line"></i>
+            <i class="ri-bank-card-line"></i>
+            <i class="ri-pix-line"></i>
+        </div>
+    </div>
+
+    <div class="copyright">
+        &copy; 2026 São Paulo Futebol Clube - Oficial. Desenvolvido para a Torcida Que Conduz.
+    </div>
+</footer>
+<script>
+    const shirts = {
+        1: {
+            title: "MANTO I",
+            desc: "Tradição que não se explica. O branco predominante com as faixas tricolores horizontais que carregam o coração de 20 milhões.",
+            img: "image/c1.png"
+        },
+        2: {
+            title: "MANTO II",
+            desc: "A camisa que entorta varal. As listras verticais em vermelho, preto e branco para quem carrega a garra tricolor em qualquer estádio.",
+            img: "image/c2.png"
+        },
+        3: {
+            title: "MANTO III",
+            desc: "A elegância da noite paulistana. O terceiro manto traz a sobriedade do preto com detalhes em dourado para o torcedor de elite.",
+            img: "image/c3.png"
+        }
+    };
+
+function updatePage(id) {
+    const mainImg = document.getElementById('main-shirt');
+    const title = document.getElementById('title');
+    const desc = document.getElementById('desc');
+
+    // 1. Inicia a animação de saída (sumir)
+    mainImg.classList.add('shirt-transition');
+    title.style.opacity = '0';
+    desc.style.opacity = '0';
+
+    setTimeout(() => {
+        // 2. Troca o conteúdo enquanto está invisível
+        mainImg.src = shirts[id].img;
+        title.innerText = shirts[id].title;
+        desc.innerText = shirts[id].desc;
+
+        // 3. Remove a classe para disparar a animação de entrada (aparecer)
+        mainImg.classList.remove('shirt-transition');
+        title.style.opacity = '1';
+        desc.style.opacity = '1';
+        
+        // Suavizando a transição do texto também
+        title.style.transition = '0.5s';
+        desc.style.transition = '0.5s';
+    }, 300); // Tempo da transição de saída
+
+    // Atualiza as miniaturas (thumbs)
+    document.querySelectorAll('.nav-thumbs img').forEach(img => img.classList.remove('active'));
+    document.getElementById('t' + id).classList.add('active');
+}
+</script>
+</body>
+</html>
